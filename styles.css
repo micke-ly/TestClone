@@ -36,6 +36,42 @@ h1 {
   padding: 30px;
 }
 
+.form-toggle-wrapper {
+  text-align: center;
+}
+
+.form-toggle-wrapper div {
+  /* display: flex; */
+  background-color: #ededed;
+  display: inline-block;
+  border-radius: 10px;
+  /* width: 50%; */
+  /* border-radius: 30%; */
+
+  /* justify-content: center; */
+  /* margin: 0 auto; */
+}
+
+.form-toggle-container {
+  padding: 3px;
+}
+
+. .form-toggle-wrapper span:last-child {
+  /* background-color: white; */
+}
+
+/* .form-toggle-wrapper span {
+  padding: 10px;
+} */
+.test {
+  padding: 10px;
+}
+
+#test1 {
+  background-color: white;
+  z-index: 1;
+}
+
 .form-container form {
   display: flex;
   flex-direction: column;
