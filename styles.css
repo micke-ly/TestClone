@@ -22,6 +22,7 @@ h1 {
   text-align: center;
 }
 
+/* FORM CONTAINERS */
 .form-wrapper {
   display: flex;
   justify-content: center;
@@ -35,48 +36,42 @@ h1 {
   background-color: white;
   padding: 30px;
 }
-
+/* FORM TOGGLE */
 .form-toggle-wrapper {
   text-align: center;
 }
 
-.form-toggle-wrapper div {
-  /* display: flex; */
+.form-toggle-container {
+  padding: 3px;
   background-color: #ededed;
   display: inline-block;
   border-radius: 10px;
-  /* width: 50%; */
-  /* border-radius: 30%; */
-
-  /* justify-content: center; */
-  /* margin: 0 auto; */
 }
 
-.form-toggle-container {
-  padding: 3px;
-}
-
-. .form-toggle-wrapper span:last-child {
-  /* background-color: white; */
-}
-
-/* .form-toggle-wrapper span {
+.form-toggle-style {
   padding: 10px;
-} */
-.test {
-  padding: 10px;
+  border: none;
+  border-radius: 10px;
 }
 
-#test1 {
+.form-toggle-inactive {
+  cursor: pointer;
+}
+
+.form-toggle-active {
   background-color: white;
-  z-index: 1;
 }
 
-.form-container form {
+/* FORM */
+.form-style {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.inactive-form {
+  display: none;
 }
 
 input:focus::placeholder {
