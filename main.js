@@ -70,4 +70,21 @@ registerToggle.addEventListener('click', changeToRegister);
 loginToggle.addEventListener('click', changeToLogin);
 
 // REGISTER FORM - COLLECT USER DATA
-registerForm.addEventListener('submit', () => {});
+registerForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const firstName = event.target.elements.firstname.value;
+  const lastName = event.target.elements.lastname.value;
+  const userName = event.target.elements.username.value;
+  const password = event.target.elements.password.value;
+  const email = event.target.elements.email.value;
+
+  const isValidFirstName = /^[A-Z][a-z]*$/.test(firstName);
+  const isValidLastName = /^[A-Z][a-z]*$/.test(lastName);
+  const isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
+  const isValidPassword =
+    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]){6,}$/.test(
+      password
+    );
+  const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
+});
