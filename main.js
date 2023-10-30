@@ -90,7 +90,7 @@ registerForm.addEventListener('submit', (event) => {
     );
   const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
   const users = JSON.parse(localStorage.getItem('users'));
-  const hasUserName = users.some((user) => user.username === userName);
+  const hasUserName = users.some((user) => user.userName === userName);
   const hasEmail = users.some((user) => user.email === email);
 
   if (
@@ -121,5 +121,21 @@ registerForm.addEventListener('input', (event) => {
   if (event.target.name === 'firstname') {
     let x = event.target.value;
     console.log(x);
+  }
+});
+
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const userName = event.target.elements.username.value;
+  const password = event.target.elements.password.value;
+  const users = JSON.parse(localStorage.getItem('users'));
+  const hasUserName = users.some((user) => user.userName == userName);
+  const hasPassword = users.some((user) => user.password == password);
+
+  if (hasUserName && hasPassword) {
+    window.location.href = 'rps.html';
+  } else {
+    console.log('no user exists');
   }
 });
