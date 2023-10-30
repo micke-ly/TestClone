@@ -89,13 +89,18 @@ registerForm.addEventListener('submit', (event) => {
       password
     );
   const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
+  const users = JSON.parse(localStorage.getItem('users'));
+  const hasUserName = users.some((user) => user.username === userName);
+  const hasEmail = users.some((user) => user.email === email);
 
   if (
     isValidFirstName &&
     isValidLastName &&
     isValidUserName &&
     isValidPassword &&
-    isValidEmail
+    isValidEmail &&
+    !hasUserName &&
+    !hasEmail
   ) {
     const userData = {
       firstName,
@@ -104,17 +109,12 @@ registerForm.addEventListener('submit', (event) => {
       password,
       email,
     };
-    const users = JSON.parse(localStorage.getItem('users'));
+
     users.push(userData);
     localStorage.setItem('users', JSON.stringify(users));
   } else {
     console.log('invalid input');
   }
-
-  const inputFields = registerForm.querySelectorAll('input');
-  inputFields.forEach((input) => {
-    input.value = '';
-  });
 });
 
 registerForm.addEventListener('input', (event) => {
@@ -123,5 +123,3 @@ registerForm.addEventListener('input', (event) => {
     console.log(x);
   }
 });
-
-console.log(localStorage.getItem);
