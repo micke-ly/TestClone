@@ -1,11 +1,13 @@
-// SELECTORS
+'use strict';
+
+// DOM SELECTORS
 const registerToggle = document.getElementById('register-toggle');
 const loginToggle = document.getElementById('login-toggle');
 const registerForm = document.getElementById('register-form');
-// const formToggleButton = document.querySelectorAll('.form-toggle-style');
 const loginForm = document.getElementById('login-form');
 
-function changeToLogin() {
+// FUNCTIONS
+function changeToRegister() {
   if (
     registerForm.classList.contains('inactive-form') &&
     registerToggle.classList.contains('form-toggle-inactive')
@@ -20,7 +22,7 @@ function changeToLogin() {
   }
 }
 
-function changeToRegister() {
+function changeToLogin() {
   if (
     loginForm.classList.contains('inactive-form') &&
     loginToggle.classList.contains('form-toggle-inactive')
@@ -35,9 +37,6 @@ function changeToRegister() {
   }
 }
 
-// formToggleButton.forEach((button) => {
-//   button.addEventListener('click', toggleForm);
-// });
-
-registerToggle.addEventListener('click', changeToLogin);
-loginToggle.addEventListener('click', changeToRegister);
+// EVENT LISTENERS
+registerToggle.addEventListener('click', changeToRegister);
+loginToggle.addEventListener('click', changeToLogin);
