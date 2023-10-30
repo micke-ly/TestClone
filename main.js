@@ -73,18 +73,55 @@ loginToggle.addEventListener('click', changeToLogin);
 registerForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  //Get input values
   const firstName = event.target.elements.firstname.value;
   const lastName = event.target.elements.lastname.value;
   const userName = event.target.elements.username.value;
   const password = event.target.elements.password.value;
   const email = event.target.elements.email.value;
 
-  const isValidFirstName = /^[A-Z][a-z]*$/.test(firstName);
-  const isValidLastName = /^[A-Z][a-z]*$/.test(lastName);
+  // Validate input values and store the result
+  const isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
+  const isValidLastName = /^[A-Z][a-z]+$/.test(lastName);
   const isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
   const isValidPassword =
-    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]){6,}$/.test(
+    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
       password
     );
   const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
+
+  if (
+    isValidFirstName &&
+    isValidLastName &&
+    isValidUserName &&
+    isValidPassword &&
+    isValidEmail
+  ) {
+    const userData = {
+      firstName,
+      lastName,
+      userName,
+      password,
+      email,
+    };
+    const users = JSON.parse(localStorage.getItem('users'));
+    users.push(userData);
+    localStorage.setItem('users', JSON.stringify(users));
+  } else {
+    console.log('invalid input');
+  }
+
+  const inputFields = registerForm.querySelectorAll('input');
+  inputFields.forEach((input) => {
+    input.value = '';
+  });
 });
+
+registerForm.addEventListener('input', (event) => {
+  if (event.target.name === 'firstname') {
+    let x = event.target.value;
+    console.log(x);
+  }
+});
+
+console.log(localStorage.getItem);
