@@ -1,12 +1,22 @@
 'use strict';
 
-// DOM SELECTORS
+// ==============================
+// VARIABLES AND SELECTORS
+// ==============================
+
+// SELECTORS
 const registerToggle = document.getElementById('register-toggle');
 const loginToggle = document.getElementById('login-toggle');
 const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
 
+// VARIABLES
+
+// ==============================
 // FUNCTIONS
+// ==============================
+
+// FORM TOGGLE FUNCTIONS
 function changeToRegister() {
   if (
     registerForm.classList.contains('inactive-form') &&
@@ -21,7 +31,6 @@ function changeToRegister() {
     registerToggle.classList.remove('form-toggle-inactive');
   }
 }
-
 function changeToLogin() {
   if (
     loginForm.classList.contains('inactive-form') &&
@@ -37,6 +46,28 @@ function changeToLogin() {
   }
 }
 
+function setupLocalStorage() {
+  const users = localStorage.getItem('users');
+  if (users === null) {
+    const existingUsers = [];
+    localStorage.setItem('users', JSON.stringify(existingUsers));
+  }
+}
+
+// ==============================
+// INITIALIZATION
+// ==============================
+
+// SETUP LOCAL STORAGE
+setupLocalStorage();
+
+// ==============================
 // EVENT LISTENERS
+// ==============================
+
+// FORM TOGGLE
 registerToggle.addEventListener('click', changeToRegister);
 loginToggle.addEventListener('click', changeToLogin);
+
+// REGISTER FORM - COLLECT USER DATA
+registerForm.addEventListener('submit', () => {});
