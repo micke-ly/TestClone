@@ -47,48 +47,27 @@ const toggleButtons = document.querySelectorAll('.form-toggle-style');
 //   }
 // }
 
-// function formToggle(button) {
-//   if (
-//     loginToggle.classList.contains('form-toggle-inactive') &&
-//     button.textContent.trim() === 'Login'
-//   ) {
-//     loginForm.classList.remove('inactive-form');
-//     registerForm.classList.add('inactive-form');
+function formClassToggle() {
+  loginForm.classList.toggle('inactive-form');
+  registerForm.classList.toggle('inactive-form');
 
-//     registerToggle.classList.remove('form-toggle-active');
-//     loginToggle.classList.remove('form-toggle-inactive');
-//     loginToggle.classList.add('form-toggle-active');
-//     registerToggle.classList.add('form-toggle-inactive');
-//   } else if (
-//     registerToggle.classList.contains('form-toggle-inactive') &&
-//     button.textContent.trim() === 'Register'
-//   ) {
-//   }
-// }
+  registerToggle.classList.toggle('form-toggle-active');
+  loginToggle.classList.toggle('form-toggle-inactive');
+  loginToggle.classList.toggle('form-toggle-active');
+  registerToggle.classList.toggle('form-toggle-inactive');
+}
 
-function formToggle(button) {
+function changeForm(button) {
   if (
     loginToggle.classList.contains('form-toggle-inactive') &&
     button.textContent.trim() == 'Login'
   ) {
-    loginForm.classList.toggle('inactive-form');
-    registerForm.classList.add('inactive-form');
-
-    registerToggle.classList.toggle('form-toggle-active');
-    loginToggle.classList.toggle('form-toggle-inactive');
-    loginToggle.classList.toggle('form-toggle-active');
-    registerToggle.classList.toggle('form-toggle-inactive');
+    formClassToggle();
   } else if (
     registerToggle.classList.contains('form-toggle-inactive') &&
     button.textContent.trim() == 'Register'
   ) {
-    loginForm.classList.toggle('inactive-form');
-    registerForm.classList.toggle('inactive-form');
-
-    registerToggle.classList.toggle('form-toggle-active');
-    loginToggle.classList.toggle('form-toggle-inactive');
-    loginToggle.classList.toggle('form-toggle-active');
-    registerToggle.classList.toggle('form-toggle-inactive');
+    formClassToggle();
   }
 }
 
@@ -121,10 +100,9 @@ setupLocalStorage();
 // FORM TOGGLE
 toggleButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    formToggle(button);
+    changeForm(button);
   });
 });
-
 // registerToggle.addEventListener('click', changeToRegister);
 // loginToggle.addEventListener('click', changeToLogin);
 
