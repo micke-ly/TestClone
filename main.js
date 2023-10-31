@@ -54,6 +54,13 @@ function setupLocalStorage() {
   }
 }
 
+function clearInputs(form) {
+  const inputs = form.querySelectorAll('input');
+  inputs.forEach((input) => {
+    input.value = '';
+  });
+}
+
 // ==============================
 // INITIALIZATION
 // ==============================
@@ -112,6 +119,7 @@ registerForm.addEventListener('submit', (event) => {
 
     users.push(userData);
     localStorage.setItem('users', JSON.stringify(users));
+    clearInputs(registerForm);
   } else {
     console.log('invalid input');
   }
