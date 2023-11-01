@@ -155,12 +155,16 @@ registerForm.addEventListener('submit', (event) => {
   }
 });
 
-registerForm.addEventListener('input', (event) => {
-  if (event.target.name === 'firstname') {
-    let x = event.target.value;
-    console.log(x);
-  }
-});
+registerForm.addEventListener(
+  'blur',
+  (event) => {
+    if (event.target.name === 'firstname') {
+      let x = event.target.value;
+      console.log(x);
+    }
+  },
+  true
+);
 
 loginForm.addEventListener('submit', (event) => {
   event.preventDefault();
