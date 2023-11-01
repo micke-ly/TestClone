@@ -10,6 +10,7 @@ const loginToggle = document.getElementById('login-toggle');
 const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
 const toggleButtons = document.querySelectorAll('.form-toggle-style');
+const registerSubmitBtn = document.getElementById('registerSubmit');
 
 // VARIABLES
 
@@ -180,20 +181,25 @@ registerForm.addEventListener(
   'blur',
   (event) => {
     const validationFunction = validationMethods[event.target.name];
-
-    // if (validationFunction) {
-    //   const isValid = validationFunction(event.target.value);
-    //   if (isValid) {
-    //     event.target.style.borderColor = 'green';
-    //   } else {
-    //     event.target.style.borderColor = 'red';
-    //   }
-    // }
     if (validationFunction(event.target.value)) {
       event.target.style.borderColor = 'green';
     } else {
       event.target.style.borderColor = 'red';
     }
+
+    const registerNodeList = registerForm.querySelectorAll('input');
+    const registerFormArray = [...registerNodeList];
+
+    let isInputsValid = registerFormArray.every(
+      (a) => window.getComputedStyle(a).borderColor === 'rgb(0, 128, 0)'
+    );
+
+    if (isInputsValid) {
+      registerSubmitBtn.disabled = false;
+    }
+
+    // console.log(registerFormArray);
+    // console.log(window.getComputedStyle(registerFormArray[0]).borderColor);
   },
   true
 );
