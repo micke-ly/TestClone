@@ -86,6 +86,33 @@ function clearInputs(form) {
   });
 }
 
+// VALIDATION METHODS
+const validationMethods = {
+  firstname: function (value) {
+    let isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
+    return isValidFirstName;
+  },
+  lastname: function (value) {
+    let isValidLastName = /^[A-Z][a-z]+$/.test(lastName);
+    return isValidLastName;
+  },
+  username: function (value) {
+    let isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
+    return isValidUserName;
+  },
+  password: function (value) {
+    let isValidPassword =
+      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
+        password
+      );
+    return isValidPassword;
+  },
+  email: function (value) {
+    let isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
+    return isValidEmail;
+  },
+};
+
 // ==============================
 // INITIALIZATION
 // ==============================
