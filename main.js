@@ -89,27 +89,21 @@ function clearInputs(form) {
 // VALIDATION METHODS
 const validationMethods = {
   firstname: function (value) {
-    let isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
-    return isValidFirstName;
+    return /^[A-Z][a-z]+$/.test(value);
   },
   lastname: function (value) {
-    let isValidLastName = /^[A-Z][a-z]+$/.test(lastName);
-    return isValidLastName;
+    return /^[A-Z][a-z]+$/.test(value);
   },
   username: function (value) {
-    let isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
-    return isValidUserName;
+    return /^[a-zA-Z0-9_-]{3,15}$/.test(value);
   },
   password: function (value) {
-    let isValidPassword =
-      /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
-        password
-      );
-    return isValidPassword;
+    return /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
+      value
+    );
   },
   email: function (value) {
-    let isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
-    return isValidEmail;
+    return /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(value);
   },
 };
 
@@ -185,9 +179,20 @@ registerForm.addEventListener('submit', (event) => {
 registerForm.addEventListener(
   'blur',
   (event) => {
-    if (event.target.name === 'firstname') {
-      let x = event.target.value;
-      console.log(x);
+    const validationFunction = validationMethods[event.target.name];
+
+    // if (validationFunction) {
+    //   const isValid = validationFunction(event.target.value);
+    //   if (isValid) {
+    //     event.target.style.borderColor = 'green';
+    //   } else {
+    //     event.target.style.borderColor = 'red';
+    //   }
+    // }
+    if (validationFunction(event.target.value)) {
+      event.target.style.borderColor = 'green';
+    } else {
+      event.target.style.borderColor = 'red';
     }
   },
   true
