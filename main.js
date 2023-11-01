@@ -196,6 +196,8 @@ registerForm.addEventListener(
 
     if (isInputsValid) {
       registerSubmitBtn.disabled = false;
+    } else {
+      registerSubmitBtn.disabled = true;
     }
 
     // console.log(registerFormArray);
