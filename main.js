@@ -155,7 +155,7 @@ toggleButtons.forEach((button) => {
 
 // REGISTER FORM - COLLECT USER DATA
 registerForm.addEventListener('submit', (event) => {
-  // event.preventDefault();
+  event.preventDefault();
 
   // Get input values
   const firstName = event.target.elements.firstname.value;
@@ -163,54 +163,55 @@ registerForm.addEventListener('submit', (event) => {
   const userName = event.target.elements.username.value;
   const password = event.target.elements.password.value;
   const email = event.target.elements.email.value;
-  const users = JSON.parse(localStorage.getItem('users'));
-  const userData = {
-    firstName,
-    lastName,
-    userName,
-    password,
-    email,
-  };
+
+  // const users = JSON.parse(localStorage.getItem('users'));
+  // const userData = {
+  //   firstName,
+  //   lastName,
+  //   userName,
+  //   password,
+  //   email,
+  // };
 
   users.push(userData);
   localStorage.setItem('users', JSON.stringify(users));
 
   // Validate input values and store the result
-  // const isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
-  // const isValidLastName = /^[A-Z][a-z]+$/.test(lastName);
-  // const isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
-  // const isValidPassword =
-  //   /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
-  //     password
-  //   );
-  // const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
-  // const users = JSON.parse(localStorage.getItem('users'));
-  // const hasUserName = users.some((user) => user.userName === userName);
-  // const hasEmail = users.some((user) => user.email === email);
+  const isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
+  const isValidLastName = /^[A-Z][a-z]+$/.test(lastName);
+  const isValidUserName = /^[a-zA-Z0-9_-]{3,15}$/.test(userName);
+  const isValidPassword =
+    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/.test(
+      password
+    );
+  const isValidEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/.test(email);
+  const users = JSON.parse(localStorage.getItem('users'));
+  const hasUserName = users.some((user) => user.userName === userName);
+  const hasEmail = users.some((user) => user.email === email);
 
-  // if (
-  //   isValidFirstName &&
-  //   isValidLastName &&
-  //   isValidUserName &&
-  //   isValidPassword &&
-  //   isValidEmail &&
-  //   !hasUserName &&
-  //   !hasEmail
-  // ) {
-  //   const userData = {
-  //     firstName,
-  //     lastName,
-  //     userName,
-  //     password,
-  //     email,
-  //   };
+  if (
+    isValidFirstName &&
+    isValidLastName &&
+    isValidUserName &&
+    isValidPassword &&
+    isValidEmail &&
+    !hasUserName &&
+    !hasEmail
+  ) {
+    const userData = {
+      firstName,
+      lastName,
+      userName,
+      password,
+      email,
+    };
 
-  //   users.push(userData);
-  //   localStorage.setItem('users', JSON.stringify(users));
-  //   clearInputs(registerForm);
-  // } else {
-  //   console.log('invalid input');
-  // }
+    users.push(userData);
+    localStorage.setItem('users', JSON.stringify(users));
+    clearInputs(registerForm);
+  } else {
+    console.log('invalid input');
+  }
 });
 
 registerForm.addEventListener(
