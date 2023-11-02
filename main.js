@@ -173,8 +173,8 @@ registerForm.addEventListener('submit', (event) => {
   //   email,
   // };
 
-  users.push(userData);
-  localStorage.setItem('users', JSON.stringify(users));
+  // users.push(userData);
+  // localStorage.setItem('users', JSON.stringify(users));
 
   // Validate input values and store the result
   const isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
@@ -209,6 +209,11 @@ registerForm.addEventListener('submit', (event) => {
     users.push(userData);
     localStorage.setItem('users', JSON.stringify(users));
     clearInputs(registerForm);
+    const success = document.getElementById('account-created');
+    success.classList.remove('message-inactive');
+    setTimeout(() => {
+      success.classList.add('message-inactive');
+    }, 3000);
   } else {
     console.log('invalid input');
   }
@@ -221,10 +226,10 @@ registerForm.addEventListener(
     const validationFunction = validationMethods[event.target.name];
     if (validationFunction(event.target.value)) {
       event.target.style.borderColor = 'green';
-      errorMessage.classList.add('error-inactive');
+      errorMessage.classList.add('message-inactive');
     } else {
       event.target.style.borderColor = 'red';
-      errorMessage.classList.remove('error-inactive');
+      errorMessage.classList.remove('message-inactive');
     }
 
     const registerFormArray = [...registerInputsList];
