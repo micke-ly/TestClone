@@ -163,7 +163,7 @@ registerForm.addEventListener('submit', (event) => {
   const userName = event.target.elements.username.value;
   const password = event.target.elements.password.value;
   const email = event.target.elements.email.value;
-
+  const users = JSON.parse(localStorage.getItem('users'));
   const userData = {
     firstName,
     lastName,
