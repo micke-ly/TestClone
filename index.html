@@ -57,6 +57,7 @@
                 name="firstname"
                 id="firstname"
                 placeholder="Start with a capital letter"
+                autocomplete="given-name"
               />
               <p id="error-firstname" class="message-inactive">Invalid Input</p>
             </div>
@@ -67,6 +68,7 @@
                 name="lastname"
                 id="lastname"
                 placeholder="Start with a capital letter"
+                autocomplete="family-name"
               />
               <p id="error-lastname" class="message-inactive">Invalid Input</p>
             </div>
@@ -76,6 +78,7 @@
             type="text"
             name="username"
             placeholder="Between 3-15 characters"
+            autocomplete="username"
           />
           <p id="error-username" class="message-inactive">Invalid Input</p>
           <label for="password">Password</label>
@@ -91,6 +94,7 @@
             name="email"
             id="email"
             placeholder="Please enter a valid Email"
+            autocomplete="email"
           />
           <p id="error-email" class="message-inactive">Invalid Input</p>
           <button id="registerSubmit" type="submit" disabled>Register</button>

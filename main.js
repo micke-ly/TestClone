@@ -209,6 +209,10 @@ registerForm.addEventListener('submit', (event) => {
     users.push(userData);
     localStorage.setItem('users', JSON.stringify(users));
     clearInputs(registerForm);
+    const registerInputs = registerForm.querySelectorAll('input');
+    registerInputs.forEach((input) => {
+      input.style.borderColor = 'black';
+    });
     const success = document.getElementById('account-created');
     success.classList.remove('message-inactive');
     setTimeout(() => {
