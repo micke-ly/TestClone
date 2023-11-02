@@ -56,8 +56,9 @@
                 type="text"
                 name="firstname"
                 id="firstname"
-                placeholder="First Name"
+                placeholder="Start with a capital letter"
               />
+              <p id="error-firstname" class="error-inactive">Invalid Input</p>
             </div>
             <div class="form-style">
               <label for="lastname">Last Name</label>
@@ -65,16 +66,33 @@
                 type="text"
                 name="lastname"
                 id="lastname"
-                placeholder="Last Name"
+                placeholder="Start with a capital letter"
               />
+              <p id="error-lastname" class="error-inactive">Invalid Input</p>
             </div>
           </div>
           <label for="username">Username</label>
-          <input type="text" name="username" placeholder="Username" />
+          <input
+            type="text"
+            name="username"
+            placeholder="Between 3-15 characters"
+          />
+          <p id="error-username" class="error-inactive">Invalid Input</p>
           <label for="password">Password</label>
-          <input type="password" name="password" placeholder="Password" />
+          <input
+            type="password"
+            name="password"
+            placeholder="Minimum length is 6 characters"
+          />
+          <p id="error-password" class="error-inactive">Invalid Input</p>
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="Email" />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Please enter a valid Email"
+          />
+          <p id="error-email" class="error-inactive">Invalid Input</p>
           <button id="registerSubmit" type="submit" disabled>Register</button>
         </form>
       </div>

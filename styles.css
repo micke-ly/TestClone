@@ -104,3 +104,7 @@ input {
   border-radius: 10px;
   padding: 0 5px;
 }
+
+.error-inactive {
+  visibility: hidden;
+}

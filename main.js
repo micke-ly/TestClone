@@ -11,7 +11,7 @@ const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
 const toggleButtons = document.querySelectorAll('.form-toggle-style');
 const registerSubmitBtn = document.getElementById('registerSubmit');
-
+const registerInputsList = registerForm.querySelectorAll('input');
 // VARIABLES
 
 // ==============================
@@ -180,15 +180,18 @@ registerForm.addEventListener('submit', (event) => {
 registerForm.addEventListener(
   'blur',
   (event) => {
+    const errorMessage = document.getElementById('error-' + event.target.name);
+    console.log(errorMessage);
     const validationFunction = validationMethods[event.target.name];
     if (validationFunction(event.target.value)) {
       event.target.style.borderColor = 'green';
+      errorMessage.classList.add('error-inactive');
     } else {
       event.target.style.borderColor = 'red';
+      errorMessage.classList.remove('error-inactive');
     }
 
-    const registerNodeList = registerForm.querySelectorAll('input');
-    const registerFormArray = [...registerNodeList];
+    const registerFormArray = [...registerInputsList];
 
     let isInputsValid = registerFormArray.every(
       (a) => window.getComputedStyle(a).borderColor === 'rgb(0, 128, 0)'
