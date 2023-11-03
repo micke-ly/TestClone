@@ -154,6 +154,10 @@ nav i:hover {
 }
 
 /* MODAL */
+.modal-container {
+  position: relative;
+}
+
 .modal {
   /* display: none; */
   position: fixed;
@@ -169,4 +173,17 @@ nav i:hover {
 
 .blur-effect {
   filter: blur(8px);
+}
+
+.modal button {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal button i {
+  font-size: 20px;
 }
