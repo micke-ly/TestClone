@@ -11,6 +11,7 @@ html {
   box-sizing: border-box;
 }
 
+/* HEADER */
 h1 {
   text-align: center;
   margin: 0 auto;
@@ -21,6 +22,7 @@ header {
   align-items: center;
 }
 
+/* NAV */
 nav i {
   font-size: 26px;
   width: 50px;
@@ -29,4 +31,11 @@ nav i {
 
 nav i:hover {
   color: red;
+}
+
+/* DISPLAY NAMES */
+.display-names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
