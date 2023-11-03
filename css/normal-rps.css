@@ -22,6 +22,7 @@ main {
 h1 {
   text-align: center;
   margin: 0 auto;
+  font-size: 5vw;
 }
 header {
   display: flex;
@@ -31,7 +32,7 @@ header {
 
 /* NAV */
 nav i {
-  font-size: 26px;
+  font-size: 30px;
   width: 50px;
   cursor: pointer;
 }
@@ -57,20 +58,74 @@ nav i:hover {
   gap: 50px;
   height: 50%;
   width: 50%;
+  position: relative;
 }
 
 .display-user-container {
-  background-color: blue;
   max-width: 300px;
   width: 100%;
+  max-height: 100px;
+  height: 100%;
 }
 
 .display-pc-container {
-  background-color: green;
   max-width: 300px;
   width: 100%;
+  max-height: 100px;
+  height: 100%;
+}
+
+.display-user {
+  background-color: blue;
 }
 
 .display-name {
   text-align: center;
+}
+
+.display-pc {
+  background-color: green;
+}
+
+.display-move-container {
+  max-height: 300px;
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.choosen-move {
+  font-size: 6vh;
+}
+
+.rps-btn-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+}
+
+.rps-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.rps-btn-container i {
+  font-size: 5vh;
+}
+
+.rps-btn-container button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.rps-btn-container button:hover {
+  color: red;
 }
