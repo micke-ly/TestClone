@@ -266,6 +266,10 @@ loginForm.addEventListener('submit', (event) => {
   if (hasUserName && hasPassword) {
     window.location.href = 'rps.html';
   } else {
-    console.log('no user exists');
+    const loginError = document.getElementById('error-login');
+    loginError.classList.remove('message-inactive');
+    setTimeout(() => {
+      loginError.classList.add('message-inactive');
+    }, 3000);
   }
 });
