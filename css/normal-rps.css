@@ -199,3 +199,16 @@ nav i:hover {
   justify-content: center;
   align-items: center;
 }
+
+table {
+  width: 80%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
+  text-align: left;
+  width: 50px;
+}
