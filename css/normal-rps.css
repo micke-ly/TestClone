@@ -152,3 +152,21 @@ nav i:hover {
 .rps-btn-container button:hover {
   color: red;
 }
+
+/* MODAL */
+.modal {
+  /* display: none; */
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  background-color: gray;
+}
+
+.blur-effect {
+  filter: blur(8px);
+}
