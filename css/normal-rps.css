@@ -98,6 +98,11 @@ nav i:hover {
   border: 1px solid black;
 }
 
+.display-move-container img {
+  width: 50px;
+  height: 50px;
+}
+
 .choosen-move {
   font-size: 6vh;
 }
@@ -113,11 +118,29 @@ nav i:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
 }
 
 .rps-btn-container i {
   font-size: 5vh;
+
+  -webkit-text-stroke-width: 1px; /* Stroke width */
+  -webkit-text-stroke-color: black; /* Stroke color */
+}
+
+.fa-hand-back-fist {
+  color: rgb(165, 101, 42);
+}
+
+.fa-hand {
+  color: white;
+}
+
+.fa-hand-scissors {
+  background: linear-gradient(to right, rgb(165, 101, 42) 30%, white 70%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .rps-btn-container button {
