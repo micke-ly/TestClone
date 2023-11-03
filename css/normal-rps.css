@@ -10,3 +10,23 @@
 html {
   box-sizing: border-box;
 }
+
+h1 {
+  text-align: center;
+  margin: 0 auto;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav i {
+  font-size: 26px;
+  width: 50px;
+  cursor: pointer;
+}
+
+nav i:hover {
+  color: red;
+}
