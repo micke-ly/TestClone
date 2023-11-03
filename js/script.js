@@ -265,7 +265,7 @@ loginForm.addEventListener('submit', (event) => {
   const hasPassword = users.some((user) => user.password == password);
 
   if (hasUserName && hasPassword) {
-    window.location.href = 'rps.html';
+    window.location.href = 'normal-rps.html';
   } else {
     const loginError = document.getElementById('error-login');
     loginError.classList.remove('message-inactive');
