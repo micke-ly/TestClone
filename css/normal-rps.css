@@ -187,3 +187,15 @@ nav i:hover {
 .modal button i {
   font-size: 20px;
 }
+
+.modal button i:hover {
+  color: red;
+}
+
+.table-score-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
