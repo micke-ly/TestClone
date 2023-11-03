@@ -113,3 +113,7 @@ input {
   text-align: center;
   color: green;
 }
+
+form p {
+  color: red;
+}

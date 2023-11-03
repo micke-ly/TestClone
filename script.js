@@ -13,6 +13,7 @@ const toggleButtons = document.querySelectorAll('.form-toggle-style');
 const registerSubmitBtn = document.getElementById('registerSubmit');
 const registerInputsList = registerForm.querySelectorAll('input');
 const userExist = JSON.parse(localStorage.getItem('users'));
+let login = false;
 // VARIABLES
 
 // ==============================
