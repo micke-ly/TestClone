@@ -11,6 +11,13 @@ html {
   box-sizing: border-box;
 }
 
+html,
+body,
+main {
+  width: 100%;
+  height: 100%;
+}
+
 /* HEADER */
 h1 {
   text-align: center;
@@ -33,9 +40,37 @@ nav i:hover {
   color: red;
 }
 
-/* DISPLAY NAMES */
-.display-names {
+/* POSITIONING */
+.main-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* DISPLAY NAMES */
+.display-names-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+  height: 50%;
+  width: 50%;
+}
+
+.display-user-container {
+  background-color: blue;
+  max-width: 300px;
+  width: 100%;
+}
+
+.display-pc-container {
+  background-color: green;
+  max-width: 300px;
+  width: 100%;
+}
+
+.display-name {
+  text-align: center;
 }
