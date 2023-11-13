@@ -5,13 +5,16 @@ const playerChoices = document.querySelector('.rps-btn-container');
 const showPlayerMove = document.getElementById('show-player-move');
 const showComputerMove = document.getElementById('show-computer-move');
 const gameAccess = document.querySelector('.hide-game');
+const scoreText = document.querySelectorAll('.score-container span');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
 
+// Conditionals
 if (sessionStorage.getItem('loggedIn')) {
   gameAccess.classList.add('access-granted');
 }
+
 // FUNCTIONS
 function computerChoices() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -29,6 +32,8 @@ function result(playerMove, computerMove) {
     return 'lose';
   }
 }
+
+function displayScore() {}
 
 playerChoices.addEventListener('click', (event) => {
   let playerMove = event.target.dataset.id;

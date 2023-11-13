@@ -71,7 +71,7 @@ nav i:hover {
   align-items: center;
 }
 
-/* DISPLAY NAMES */
+/* DISPLAY PLAYER/COMPUTER */
 .display-names-container {
   display: flex;
   justify-content: space-between;
@@ -126,6 +126,20 @@ nav i:hover {
 
 .choosen-move {
   font-size: 6vh;
+}
+
+.score-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 80%;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .rps-btn-wrapper {
