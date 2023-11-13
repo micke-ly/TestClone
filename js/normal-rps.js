@@ -4,10 +4,14 @@ const modal = document.getElementById('modal');
 const playerChoices = document.querySelector('.rps-btn-container');
 const showPlayerMove = document.getElementById('show-player-move');
 const showComputerMove = document.getElementById('show-computer-move');
+const gameAccess = document.querySelector('.hide-game');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
 
+if (sessionStorage.getItem('loggedIn')) {
+  gameAccess.classList.add('access-granted');
+}
 // FUNCTIONS
 function computerChoices() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;

@@ -18,6 +18,26 @@ main {
   height: 100%;
 }
 
+/* HIDE GAME */
+.hide-game {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 2;
+}
+
+.access-granted {
+  display: none;
+}
+
 /* HEADER */
 h1 {
   text-align: center;

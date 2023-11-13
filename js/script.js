@@ -1,4 +1,5 @@
 'use strict';
+// Your code that uses querySelectorAll
 
 // ==============================
 // VARIABLES AND SELECTORS
@@ -11,9 +12,11 @@ const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
 const toggleButtons = document.querySelectorAll('.form-toggle-style');
 const registerSubmitBtn = document.getElementById('registerSubmit');
+
 const registerInputsList = registerForm.querySelectorAll('input');
 const userExist = JSON.parse(localStorage.getItem('users'));
 let login = false;
+
 // VARIABLES
 
 // ==============================
@@ -268,6 +271,7 @@ loginForm.addEventListener('submit', (event) => {
 
   if (isValidAccount) {
     window.location.href = 'normal-rps.html';
+    sessionStorage.setItem('loggedIn', 'true');
   } else {
     const loginError = document.getElementById('error-login');
     loginError.classList.remove('message-inactive');
