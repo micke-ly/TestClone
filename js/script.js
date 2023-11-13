@@ -273,6 +273,6 @@ loginForm.addEventListener('submit', (event) => {
     loginError.classList.remove('message-inactive');
     setTimeout(() => {
       loginError.classList.add('message-inactive');
-    }, 3000);
+    }, 5000);
   }
 });

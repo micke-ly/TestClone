@@ -158,7 +158,7 @@ nav i:hover {
   position: relative;
 }
 
-.modal {
+#modal {
   /* display: none; */
   position: fixed;
   z-index: 2;
@@ -171,11 +171,15 @@ nav i:hover {
   background-color: gray;
 }
 
+.modal-inactive {
+  display: none;
+}
+
 .blur-effect {
   filter: blur(8px);
 }
 
-.modal button {
+#modal button {
   position: absolute;
   top: 2%;
   right: 2%;
@@ -184,11 +188,11 @@ nav i:hover {
   cursor: pointer;
 }
 
-.modal button i {
+#modal button i {
   font-size: 20px;
 }
 
-.modal button i:hover {
+#modal button i:hover {
   color: red;
 }
 
