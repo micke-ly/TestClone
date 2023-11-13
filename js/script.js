@@ -261,10 +261,12 @@ loginForm.addEventListener('submit', (event) => {
   const userName = event.target.elements.username.value;
   const password = event.target.elements.password.value;
   const users = JSON.parse(localStorage.getItem('users'));
-  const hasUserName = users.some((user) => user.userName == userName);
-  const hasPassword = users.some((user) => user.password == password);
+  const isValidAccount = users.some(
+    (user) => user.userName == userName && user.password == password
+  );
+  // const hasPassword = users.some((user) => user.password == password);
 
-  if (hasUserName && hasPassword) {
+  if (isValidAccount) {
     window.location.href = 'normal-rps.html';
   } else {
     const loginError = document.getElementById('error-login');
