@@ -3,15 +3,38 @@ const modalToggleBtns = document.querySelectorAll('.modal-toggle');
 const modal = document.getElementById('modal');
 const playerChoices = document.querySelector('.rps-btn-container');
 const showPlayerMove = document.getElementById('show-player-move');
+const showComputerMove = document.getElementById('show-computer-move');
 
 // VARIABLES
-let playerMove;
-let computerMove;
+const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
+
+// FUNCTIONS
+function computerChoices() {
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  const computerChoices = { 1: 'rock', 2: 'paper', 3: 'scissors' };
+  return computerChoices[randomNumber];
+}
+
+function result(playerMove, computerMove) {
+  if (computerMove === playerMove) {
+    return 'draw';
+  }
+  if (computerMove === rules[playerMove]) {
+    return 'win';
+  } else {
+    return 'lose';
+  }
+}
 
 playerChoices.addEventListener('click', (event) => {
-  playerMove = event.target.dataset.id;
+  let playerMove = event.target.dataset.id;
+  let computerMove = computerChoices();
+  // console.log(computerMove);
   showPlayerMove.src = `images/${playerMove}.png`;
-  console.log(playerMove);
+  showComputerMove.src = `images/${computerMove}.png`;
+
+  // console.log(playerMove);
+  console.log(result(playerMove, computerMove));
 });
 
 // MODAL
