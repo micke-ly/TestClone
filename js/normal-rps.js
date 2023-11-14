@@ -72,9 +72,14 @@ function updateScores(result) {
     recentGames.pop();
     recentGames.unshift(currentGame);
   }
+
+  user.recentGames = recentGames;
+  users[userIndex] = user;
+  localStorage.setItem('users', JSON.stringify(users));
+  displayScore(user);
 }
 
-function displayScore() {}
+function displayScore(user) {}
 
 playerChoices.addEventListener('click', (event) => {
   let playerMove = event.target.dataset.id;
