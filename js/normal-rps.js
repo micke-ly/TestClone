@@ -43,19 +43,35 @@ function updateScores(result) {
   );
   const now = new Date();
   const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+  const recentGames = user.normalRPS.recentGames;
+  const currentGameIndex = recentGames.findIndex((game) => game.date === date);
+  const currentGame =
+    currentGameIndex !== -1 ? recentGames[currentGameIndex] : { date };
 
   user.normalRPS.gamesPlayed += 1;
 
   if (result === 'win') {
     user.normalRPS.totalWins += 1;
+    currentGame.wins += 1;
   } else if (result === 'draw') {
     user.normalRPS.totalDraws += 1;
+    currentGame.draws += 1;
   } else if (result === 'lose') {
     user.normalRPS.totalLoses += 1;
+    currentGame.loses += 1;
   }
   let winPercentage =
     (user.normalRPS.totalWins / user.normalRPS.gamesPlayed) * 100;
   user.normalRPS.totalWinPercentage = winPercentage.toFixed(2) + '%';
+
+  if (recentGames[currentGameIndex]) {
+    recentGames[currentGameIndex] = currentGame;
+  } else if (recentGames.length < 10) {
+    recentGames.unshift(currentGame);
+  } else {
+    recentGames.pop();
+    recentGames.unshift(currentGame);
+  }
 }
 
 function displayScore() {}
