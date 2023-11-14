@@ -34,9 +34,16 @@ function result(playerMove, computerMove) {
 }
 
 function updateScores(result) {
-  const user = JSON.parse(localStorage.getItem('users')).find(
+  const users = JSON.parse(localStorage.getItem('users'));
+  const user = users.find(
     (user) => user.userName === sessionStorage.getItem('loggedIn')
   );
+  const userIndex = users.findIndex(
+    (user) => user.userName === sessionStorage.getItem('loggedIn')
+  );
+  const now = new Date();
+  const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+
   user.normalRPS.gamesPlayed += 1;
 
   if (result === 'win') {
