@@ -33,6 +33,24 @@ function result(playerMove, computerMove) {
   }
 }
 
+function updateScores(result) {
+  const user = JSON.parse(localStorage.getItem('users')).find(
+    (user) => user.userName === sessionStorage.getItem('loggedIn')
+  );
+  user.normalRPS.gamesPlayed += 1;
+
+  if (result === 'win') {
+    user.normalRPS.totalWins += 1;
+  } else if (result === 'draw') {
+    user.normalRPS.totalDraws += 1;
+  } else if (result === 'lose') {
+    user.normalRPS.totalLoses += 1;
+  }
+  let winPercentage =
+    (user.normalRPS.totalWins / user.normalRPS.gamesPlayed) * 100;
+  user.normalRPS.totalWinPercentage = winPercentage.toFixed(2) + '%';
+}
+
 function displayScore() {}
 
 playerChoices.addEventListener('click', (event) => {

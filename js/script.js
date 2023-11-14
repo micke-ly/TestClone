@@ -210,9 +210,9 @@ registerForm.addEventListener('submit', (event) => {
       email,
       normalRPS: {
         gamesPlayed: 0,
-        totalWin: 0,
-        totalDraw: 0,
-        totalLose: 0,
+        totalWins: 0,
+        totalDraws: 0,
+        totalLoses: 0,
         totalWinPercentage: 0,
         recentGames: [],
       },
