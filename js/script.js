@@ -208,6 +208,14 @@ registerForm.addEventListener('submit', (event) => {
       userName,
       password,
       email,
+      normalRPS: {
+        gamesPlayed: 0,
+        totalWin: 0,
+        totalDraw: 0,
+        totalLose: 0,
+        totalWinPercentage: 0,
+        recentGames: [],
+      },
     };
 
     users.push(userData);
@@ -271,7 +279,7 @@ loginForm.addEventListener('submit', (event) => {
 
   if (isValidAccount) {
     window.location.href = 'normal-rps.html';
-    sessionStorage.setItem('loggedIn', 'true');
+    sessionStorage.setItem('loggedIn', userName);
   } else {
     const loginError = document.getElementById('error-login');
     loginError.classList.remove('message-inactive');

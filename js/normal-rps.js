@@ -39,11 +39,17 @@ playerChoices.addEventListener('click', (event) => {
   let playerMove = event.target.dataset.id;
   let computerMove = computerChoices();
   // console.log(computerMove);
-  showPlayerMove.src = `images/${playerMove}.png`;
-  showComputerMove.src = `images/${computerMove}.png`;
+  if (
+    playerMove === 'rock' ||
+    playerMove === 'paper' ||
+    playerMove === 'scissors'
+  ) {
+    showPlayerMove.src = `images/${playerMove}.png`;
+    showComputerMove.src = `images/${computerMove}.png`;
+    console.log(result(playerMove, computerMove));
+  }
 
   // console.log(playerMove);
-  console.log(result(playerMove, computerMove));
 });
 
 // MODAL
