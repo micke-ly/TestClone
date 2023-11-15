@@ -6,6 +6,8 @@ const showPlayerMove = document.getElementById('show-player-move');
 const showComputerMove = document.getElementById('show-computer-move');
 const gameAccess = document.querySelector('.hide-game');
 const scoreText = document.querySelectorAll('.score-container span');
+const displayPlayerName = document.querySelector('.display-user');
+const displayResult = document.getElementById('display-result');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -13,6 +15,7 @@ const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
 // Conditionals
 if (sessionStorage.getItem('loggedIn')) {
   gameAccess.classList.add('access-granted');
+  displayPlayerName.textContent = sessionStorage.getItem('loggedIn');
 }
 
 // FUNCTIONS
@@ -25,13 +28,13 @@ function computerChoices() {
 function result(playerMove, computerMove) {
   if (computerMove === playerMove) {
     updateScores('draw');
-    console.log('draw');
+    displayResult.textContent = 'Draw!';
   } else if (computerMove === rules[playerMove]) {
     updateScores('win');
-    console.log('win');
+    displayResult.textContent = 'You Win!';
   } else {
     updateScores('lose');
-    console.log('lose');
+    displayResult.textContent = 'You Lose!';
   }
 }
 

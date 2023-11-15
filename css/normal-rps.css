@@ -135,6 +135,14 @@ nav i:hover {
   bottom: 80%;
 }
 
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  font-size: 50px;
+}
+
 .score-container {
   display: flex;
   justify-content: center;
