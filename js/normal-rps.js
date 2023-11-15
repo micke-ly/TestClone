@@ -24,12 +24,14 @@ function computerChoices() {
 
 function result(playerMove, computerMove) {
   if (computerMove === playerMove) {
-    return 'draw';
-  }
-  if (computerMove === rules[playerMove]) {
-    return 'win';
+    updateScores('draw');
+    console.log('draw');
+  } else if (computerMove === rules[playerMove]) {
+    updateScores('win');
+    console.log('win');
   } else {
-    return 'lose';
+    updateScores('lose');
+    console.log('lose');
   }
 }
 
@@ -79,12 +81,15 @@ function updateScores(result) {
   displayScore(user);
 }
 
-function displayScore(user) {}
+function displayScore(user) {
+  scoreText[0].textContent = user.recentGames.wins;
+  scoreText[1].textContent = user.recentGames.draws;
+  scoreText[2].textContent = user.recentGames.loses;
+}
 
 playerChoices.addEventListener('click', (event) => {
   let playerMove = event.target.dataset.id;
   let computerMove = computerChoices();
-  // console.log(computerMove);
   if (
     playerMove === 'rock' ||
     playerMove === 'paper' ||
@@ -92,7 +97,7 @@ playerChoices.addEventListener('click', (event) => {
   ) {
     showPlayerMove.src = `images/${playerMove}.png`;
     showComputerMove.src = `images/${computerMove}.png`;
-    console.log(result(playerMove, computerMove));
+    result(playerMove, computerMove);
   }
 
   // console.log(playerMove);
