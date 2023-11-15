@@ -10,6 +10,7 @@ const displayPlayerName = document.querySelector('.display-user');
 const displayResult = document.getElementById('display-result');
 const tfootScores = document.querySelectorAll('tfoot span');
 const logoutBtn = document.getElementById('logout-btn');
+const tbody = document.querySelector('tbody');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -41,6 +42,7 @@ playerChoices.addEventListener('click', (event) => {
 // MODAL
 modalToggleBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
+    modalScoreBoard();
     modal.classList.toggle('modal-inactive');
   });
 });
@@ -127,5 +129,24 @@ function modalScoreBoard() {
   const user = users.find(
     (user) => user.userName === sessionStorage.getItem('loggedIn')
   );
+
   tfootScores[0].textContent = user.normalRPS.gamesPlayed;
+  tfootScores[1].textContent = `${user.normalRPS.totalWins}/${user.normalRPS.totalDraws}/${user.normalRPS.totalLoses}`;
+  tfootScores[2].textContent = user.normalRPS.totalWinPercentage;
+
+  user.normalRPS.recentGames.forEach((game) => {
+    let winPercentage =
+      (game.wins / (game.wins + game.draws + game.loses)) * 100;
+    let gameScore = `<tr>
+                  <td>${game.date}</td>
+                  <td>${game.wins}/${game.draws}/${game.loses}</td>
+                  <td>${winPercentage.toFixed(2) + '%'}</td>
+                </tr>`;
+
+    if (modal.classList.contains('modal-inactive')) {
+      tbody.innerHTML = '';
+    }
+
+    tbody.insertAdjacentHTML('afterbegin', gameScore);
+  });
 }
