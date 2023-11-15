@@ -1,3 +1,9 @@
+'use strict';
+
+// ==============================
+// VARIABLES AND SELECTORS
+// ==============================
+
 // SELECTORS
 const modalToggleBtns = document.querySelectorAll('.modal-toggle');
 const modal = document.getElementById('modal');
@@ -21,7 +27,9 @@ if (sessionStorage.getItem('loggedIn')) {
   displayPlayerName.textContent = sessionStorage.getItem('loggedIn');
 }
 
-// Event Listeners
+// ==============================
+// EVENT LISTENERS
+// ==============================
 
 playerChoices.addEventListener('click', (event) => {
   let playerMove = event.target.dataset.id;
@@ -52,7 +60,10 @@ logoutBtn.addEventListener('click', () => {
   sessionStorage.clear();
 });
 
+// ==============================
 // FUNCTIONS
+// ==============================
+
 function computerChoices() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
   const computerChoices = { 1: 'rock', 2: 'paper', 3: 'scissors' };
