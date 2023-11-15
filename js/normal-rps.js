@@ -9,6 +9,7 @@ const scoreText = document.querySelectorAll('.score-container span');
 const displayPlayerName = document.querySelector('.display-user');
 const displayResult = document.getElementById('display-result');
 const tfootScores = document.querySelectorAll('tfoot span');
+const logoutBtn = document.getElementById('logout-btn');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -42,6 +43,11 @@ modalToggleBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     modal.classList.toggle('modal-inactive');
   });
+});
+
+logoutBtn.addEventListener('click', () => {
+  window.location.href = 'index.html';
+  sessionStorage.clear();
 });
 
 // FUNCTIONS
@@ -116,7 +122,7 @@ function displayScore(currentGame) {
   scoreText[2].textContent = currentGame.loses;
 }
 
-function scoreBoard() {
+function modalScoreBoard() {
   const users = JSON.parse(localStorage.getItem('users'));
   const user = users.find(
     (user) => user.userName === sessionStorage.getItem('loggedIn')

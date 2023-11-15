@@ -39,6 +39,15 @@ main {
 }
 
 /* HEADER */
+#logout-btn {
+  margin-left: 10px;
+  width: 70px;
+  cursor: pointer;
+}
+#logout-btn:hover {
+  color: red;
+}
+
 h1 {
   text-align: center;
   margin: 0 auto;
