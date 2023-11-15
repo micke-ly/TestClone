@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="js/script.js" defer></script>
+
+    <title>Login or register</title>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <h1>Welcome to the RPS Game</h1>
+      <div class="form-container">
+        <div class="form-toggle-wrapper">
+          <div class="form-toggle-container">
+            <button
+              class="form-toggle-style form-toggle-inactive"
+              id="login-toggle"
+            >
+              Login
+            </button>
+            <button
+              class="form-toggle-style form-toggle-active"
+              id="register-toggle"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+        <form id="login-form" class="form-style inactive-form">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+          <p id="error-login" class="message-inactive">
+            Wrong username or password
+          </p>
+          <button type="submit">Login</button>
+        </form>
+        <form id="register-form" class="form-style">
+          <div class="form-flex">
+            <div class="form-style">
+              <label for="firstname">First Name</label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="Start with a capital letter"
+                autocomplete="given-name"
+              />
+              <p id="error-firstname" class="message-inactive">Invalid Input</p>
+            </div>
+            <div class="form-style">
+              <label for="lastname">Last Name</label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                placeholder="Start with a capital letter"
+                autocomplete="family-name"
+              />
+              <p id="error-lastname" class="message-inactive">Invalid Input</p>
+            </div>
+          </div>
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Between 3-15 characters"
+            autocomplete="username"
+          />
+          <p id="error-username" class="message-inactive">Invalid Input</p>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Minimum length is 6 characters"
+          />
+          <p id="error-password" class="message-inactive">Invalid Input</p>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Please enter a valid Email"
+            autocomplete="email"
+          />
+          <p id="error-email" class="message-inactive">Invalid Input</p>
+          <button id="registerSubmit" type="submit" disabled>Register</button>
+          <p id="account-created" class="message-inactive">Account created!</p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
