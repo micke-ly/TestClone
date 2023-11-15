@@ -1,6 +1,4 @@
 'use strict';
-// Your code that uses querySelectorAll
-
 // ==============================
 // VARIABLES AND SELECTORS
 // ==============================
@@ -12,46 +10,12 @@ const registerForm = document.getElementById('register-form');
 const loginForm = document.getElementById('login-form');
 const toggleButtons = document.querySelectorAll('.form-toggle-style');
 const registerSubmitBtn = document.getElementById('registerSubmit');
-
 const registerInputsList = registerForm.querySelectorAll('input');
 const userExist = JSON.parse(localStorage.getItem('users'));
-let login = false;
-
-// VARIABLES
 
 // ==============================
 // FUNCTIONS
 // ==============================
-
-// FORM TOGGLE FUNCTIONS
-// function changeToRegister() {
-//   if (
-//     // registerForm.classList.contains('inactive-form') &&
-//     registerToggle.classList.contains('form-toggle-inactive')
-//   ) {
-//     registerForm.classList.remove('inactive-form');
-//     loginForm.classList.add('inactive-form');
-
-//     loginToggle.classList.remove('form-toggle-active');
-//     registerToggle.classList.add('form-toggle-active');
-//     loginToggle.classList.add('form-toggle-inactive');
-//     registerToggle.classList.remove('form-toggle-inactive');
-//   }
-// }
-// function changeToLogin() {
-//   if (
-//     // loginForm.classList.contains('inactive-form') &&
-//     loginToggle.classList.contains('form-toggle-inactive')
-//   ) {
-//     loginForm.classList.remove('inactive-form');
-//     registerForm.classList.add('inactive-form');
-
-//     registerToggle.classList.remove('form-toggle-active');
-//     loginToggle.classList.remove('form-toggle-inactive');
-//     loginToggle.classList.add('form-toggle-active');
-//     registerToggle.classList.add('form-toggle-inactive');
-//   }
-// }
 
 function formClassToggle() {
   loginForm.classList.toggle('inactive-form');
@@ -154,8 +118,6 @@ toggleButtons.forEach((button) => {
     changeForm(button);
   });
 });
-// registerToggle.addEventListener('click', changeToRegister);
-// loginToggle.addEventListener('click', changeToLogin);
 
 // REGISTER FORM - COLLECT USER DATA
 registerForm.addEventListener('submit', (event) => {
@@ -167,18 +129,6 @@ registerForm.addEventListener('submit', (event) => {
   const userName = event.target.elements.username.value;
   const password = event.target.elements.password.value;
   const email = event.target.elements.email.value;
-
-  // const users = JSON.parse(localStorage.getItem('users'));
-  // const userData = {
-  //   firstName,
-  //   lastName,
-  //   userName,
-  //   password,
-  //   email,
-  // };
-
-  // users.push(userData);
-  // localStorage.setItem('users', JSON.stringify(users));
 
   // Validate input values and store the result
   const isValidFirstName = /^[A-Z][a-z]+$/.test(firstName);
@@ -259,9 +209,6 @@ registerForm.addEventListener(
     } else {
       registerSubmitBtn.disabled = true;
     }
-
-    // console.log(registerFormArray);
-    // console.log(window.getComputedStyle(registerFormArray[0]).borderColor);
   },
   true
 );
@@ -275,7 +222,6 @@ loginForm.addEventListener('submit', (event) => {
   const isValidAccount = users.some(
     (user) => user.userName == userName && user.password == password
   );
-  // const hasPassword = users.some((user) => user.password == password);
 
   if (isValidAccount) {
     window.location.href = 'normal-rps.html';
