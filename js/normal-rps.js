@@ -84,8 +84,11 @@ function updateScores(result) {
   const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
   const recentGames = user.normalRPS.recentGames;
   const currentGameIndex = recentGames.findIndex((game) => game.date === date);
+  console.log(currentGameIndex);
   const currentGame =
-    currentGameIndex !== -1 ? recentGames[currentGameIndex] : { date };
+    currentGameIndex !== -1
+      ? recentGames[currentGameIndex]
+      : { date, wins: 0, draws: 0, loses: 0 };
 
   user.normalRPS.gamesPlayed += 1;
 
