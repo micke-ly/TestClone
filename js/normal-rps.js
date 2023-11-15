@@ -78,13 +78,13 @@ function updateScores(result) {
   user.recentGames = recentGames;
   users[userIndex] = user;
   localStorage.setItem('users', JSON.stringify(users));
-  displayScore(user);
+  displayScore(currentGame);
 }
 
-function displayScore(user) {
-  scoreText[0].textContent = user.recentGames.wins;
-  scoreText[1].textContent = user.recentGames.draws;
-  scoreText[2].textContent = user.recentGames.loses;
+function displayScore(currentGame) {
+  scoreText[0].textContent = currentGame.wins;
+  scoreText[1].textContent = currentGame.draws;
+  scoreText[2].textContent = currentGame.loses;
 }
 
 playerChoices.addEventListener('click', (event) => {
