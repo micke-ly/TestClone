@@ -8,6 +8,7 @@ const gameAccess = document.querySelector('.hide-game');
 const scoreText = document.querySelectorAll('.score-container span');
 const displayPlayerName = document.querySelector('.display-user');
 const displayResult = document.getElementById('display-result');
+const tfootScores = document.querySelectorAll('tfoot span');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -17,6 +18,31 @@ if (sessionStorage.getItem('loggedIn')) {
   gameAccess.classList.add('access-granted');
   displayPlayerName.textContent = sessionStorage.getItem('loggedIn');
 }
+
+// Event Listeners
+
+playerChoices.addEventListener('click', (event) => {
+  let playerMove = event.target.dataset.id;
+  let computerMove = computerChoices();
+  if (
+    playerMove === 'rock' ||
+    playerMove === 'paper' ||
+    playerMove === 'scissors'
+  ) {
+    showPlayerMove.src = `images/${playerMove}.png`;
+    showComputerMove.src = `images/${computerMove}.png`;
+    result(playerMove, computerMove);
+  }
+
+  // console.log(playerMove);
+});
+
+// MODAL
+modalToggleBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    modal.classList.toggle('modal-inactive');
+  });
+});
 
 // FUNCTIONS
 function computerChoices() {
@@ -78,7 +104,7 @@ function updateScores(result) {
     recentGames.unshift(currentGame);
   }
 
-  user.recentGames = recentGames;
+  user.normalRPS.recentGames = recentGames;
   users[userIndex] = user;
   localStorage.setItem('users', JSON.stringify(users));
   displayScore(currentGame);
@@ -90,25 +116,10 @@ function displayScore(currentGame) {
   scoreText[2].textContent = currentGame.loses;
 }
 
-playerChoices.addEventListener('click', (event) => {
-  let playerMove = event.target.dataset.id;
-  let computerMove = computerChoices();
-  if (
-    playerMove === 'rock' ||
-    playerMove === 'paper' ||
-    playerMove === 'scissors'
-  ) {
-    showPlayerMove.src = `images/${playerMove}.png`;
-    showComputerMove.src = `images/${computerMove}.png`;
-    result(playerMove, computerMove);
-  }
-
-  // console.log(playerMove);
-});
-
-// MODAL
-modalToggleBtns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    modal.classList.toggle('modal-inactive');
-  });
-});
+function scoreBoard() {
+  const users = JSON.parse(localStorage.getItem('users'));
+  const user = users.find(
+    (user) => user.userName === sessionStorage.getItem('loggedIn')
+  );
+  tfootScores[0].textContent = user.normalRPS.gamesPlayed;
+}
