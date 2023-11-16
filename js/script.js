@@ -11,7 +11,6 @@ const loginForm = document.getElementById('login-form');
 const toggleButtons = document.querySelectorAll('.form-toggle-style');
 const registerSubmitBtn = document.getElementById('registerSubmit');
 const registerInputsList = registerForm.querySelectorAll('input');
-const userExist = JSON.parse(localStorage.getItem('users'));
 
 // ==============================
 // FUNCTIONS
@@ -71,6 +70,7 @@ const validationMethods = {
       errorUsername.textContent = 'Invalid Input';
       return false;
     } else if (isValid) {
+      const userExist = JSON.parse(localStorage.getItem('users'));
       if (userExist.some((user) => user.userName == value)) {
         errorUsername.textContent = 'Username already exists';
         return false;
@@ -91,6 +91,7 @@ const validationMethods = {
       errorEmail.textContent = 'Invalid Input';
       return false;
     } else if (isValid) {
+      const userExist = JSON.parse(localStorage.getItem('users'));
       if (userExist.some((user) => user.email == value)) {
         errorEmail.textContent = 'Email already exists';
         return false;
