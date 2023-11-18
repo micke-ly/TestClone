@@ -31,7 +31,8 @@ if (sessionStorage.getItem('loggedIn')) {
 // EVENT LISTENERS
 // ==============================
 
-playerChoices.addEventListener('click', (event) => {
+playerChoices.addEventListener('click', async (event) => {
+  displayResult.textContent = '';
   let playerMove = event.target.dataset.id;
   let computerMove = computerChoices();
   if (
@@ -40,6 +41,7 @@ playerChoices.addEventListener('click', (event) => {
     playerMove === 'scissors'
   ) {
     showPlayerMove.src = `images/${playerMove}.png`;
+    await roulette();
     showComputerMove.src = `images/${computerMove}.png`;
     result(playerMove, computerMove);
   }
@@ -95,7 +97,6 @@ function updateScores(result) {
   const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
   const recentGames = user.normalRPS.recentGames;
   const currentGameIndex = recentGames.findIndex((game) => game.date === date);
-  console.log(currentGameIndex);
   const currentGame =
     currentGameIndex !== -1
       ? recentGames[currentGameIndex]
@@ -163,4 +164,34 @@ function modalScoreBoard() {
 
     tbody.insertAdjacentHTML('afterbegin', gameScore);
   });
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function roulette() {
+  const rpsList = [
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+  ];
+  // if (index < rpsList.length) {
+  //   setTimeout(() => {
+  //     showComputerMove.src = rpsList[index];
+  //     roulette(index + 1);
+  //   }, 500);
+  // }
+  for (const item of rpsList) {
+    await delay(500);
+    showComputerMove.src = item;
+  }
+  await delay(500);
 }
