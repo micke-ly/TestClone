@@ -33,21 +33,17 @@ if (sessionStorage.getItem('loggedIn')) {
 // ==============================
 
 playerChoices.addEventListener('click', async (event) => {
-  displayResult.textContent = '';
-  audio[4].play();
-  let playerMove = event.target.dataset.id;
-  let computerMove = computerChoices();
-  if (
-    playerMove === 'rock' ||
-    playerMove === 'paper' ||
-    playerMove === 'scissors'
-  ) {
+  if (event.target.tagName === 'I') {
+    displayResult.textContent = '';
+    audio[4].play();
+    let playerMove = event.target.dataset.id;
+    let computerMove = computerChoices();
+
     showPlayerMove.src = `images/${playerMove}.png`;
     await roulette();
     showComputerMove.src = `images/${computerMove}.png`;
     result(playerMove, computerMove);
   }
-
   // console.log(playerMove);
 });
 
@@ -177,6 +173,7 @@ function delay(ms) {
 
 async function roulette() {
   const rpsList = [
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
     'images/rock.png',
     'images/paper.png',
     'images/scissors.png',
