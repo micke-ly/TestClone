@@ -205,6 +205,11 @@ nav i:hover {
   color: red;
 }
 
+/* AUDIO */
+.audio {
+  display: none;
+}
+
 /* MODAL */
 .modal-container {
   position: relative;

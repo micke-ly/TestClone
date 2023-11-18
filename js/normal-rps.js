@@ -17,6 +17,7 @@ const displayResult = document.getElementById('display-result');
 const tfootScores = document.querySelectorAll('tfoot span');
 const logoutBtn = document.getElementById('logout-btn');
 const tbody = document.querySelector('tbody');
+const audio = document.querySelectorAll('audio');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -79,9 +80,11 @@ function result(playerMove, computerMove) {
   } else if (computerMove === rules[playerMove]) {
     updateScores('win');
     displayResult.textContent = 'You Win!';
+    playAudio('win');
   } else {
     updateScores('lose');
     displayResult.textContent = 'You Lose!';
+    playAudio('lose');
   }
 }
 
@@ -192,6 +195,17 @@ async function roulette() {
   for (const item of rpsList) {
     await delay(500);
     showComputerMove.src = item;
+    // playAudio('shuffle');
   }
   await delay(500);
+}
+
+function playAudio(prompt) {
+  if (prompt === 'shuffle') {
+    audio[0].play();
+  } else if (prompt === 'win') {
+    audio[1].play();
+  } else if (prompt === 'lose') {
+    audio[2].play();
+  }
 }
