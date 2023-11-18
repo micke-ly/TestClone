@@ -175,9 +175,14 @@ nav i:hover {
 
 .rps-btn-container i {
   font-size: 5vh;
-
   -webkit-text-stroke-width: 1px; /* Stroke width */
   -webkit-text-stroke-color: black; /* Stroke color */
+  transform: scale(1);
+  transition: transform 0.5s ease;
+}
+
+.rps-btn-container i:hover {
+  transform: scale(1.25);
 }
 
 .fa-hand-back-fist {

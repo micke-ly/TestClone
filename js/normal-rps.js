@@ -197,12 +197,7 @@ async function roulette() {
     'images/scissors.png',
     'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
   ];
-  // if (index < rpsList.length) {
-  //   setTimeout(() => {
-  //     showComputerMove.src = rpsList[index];
-  //     roulette(index + 1);
-  //   }, 500);
-  // }
+
   await delay(700);
   for (const item of rpsList) {
     await delay(500);
