@@ -34,6 +34,8 @@ if (sessionStorage.getItem('loggedIn')) {
 
 playerChoices.addEventListener('click', async (event) => {
   if (event.target.tagName === 'I') {
+    playerChoices.style.pointerEvents = 'none';
+    playerChoices.style.opacity = '0.5';
     displayResult.textContent = '';
     audio[4].play();
     let playerMove = event.target.dataset.id;
@@ -72,18 +74,28 @@ function computerChoices() {
 
 function result(playerMove, computerMove) {
   if (computerMove === playerMove) {
+    timing(700);
     updateScores('draw');
     playAudio('draw');
     displayResult.textContent = 'Draw!';
   } else if (computerMove === rules[playerMove]) {
+    timing(2200);
     updateScores('win');
     displayResult.textContent = 'You Win!';
     playAudio('win');
   } else {
+    timing(2200);
     updateScores('lose');
     displayResult.textContent = 'You Lose!';
     playAudio('lose');
   }
+}
+
+function timing(ms) {
+  setTimeout(() => {
+    playerChoices.style.pointerEvents = 'auto';
+    playerChoices.style.opacity = '1';
+  }, ms);
 }
 
 function updateScores(result) {
@@ -202,7 +214,7 @@ async function roulette() {
       playAudio('shuffle');
     }
   }
-  await delay(500);
+  await delay(600);
 }
 
 function playAudio(prompt) {
