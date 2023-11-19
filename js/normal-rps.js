@@ -134,10 +134,10 @@ function updateScores(result) {
   if (recentGames[currentGameIndex]) {
     recentGames[currentGameIndex] = currentGame;
   } else if (recentGames.length < 10) {
-    recentGames.unshift(currentGame);
+    recentGames.push(currentGame);
   } else {
-    recentGames.pop();
-    recentGames.unshift(currentGame);
+    recentGames.shift();
+    recentGames.push(currentGame);
   }
 
   user.normalRPS.recentGames = recentGames;
@@ -153,6 +153,9 @@ function displayScore(currentGame) {
 }
 
 function modalScoreBoard() {
+  if (modal.classList.contains('modal-inactive')) {
+    tbody.innerHTML = '';
+  }
   const users = JSON.parse(localStorage.getItem('users'));
   const user = users.find(
     (user) => user.userName === sessionStorage.getItem('loggedIn')
@@ -170,10 +173,6 @@ function modalScoreBoard() {
                   <td>${game.wins}/${game.draws}/${game.loses}</td>
                   <td>${winPercentage.toFixed(2) + '%'}</td>
                 </tr>`;
-
-    if (modal.classList.contains('modal-inactive')) {
-      tbody.innerHTML = '';
-    }
 
     tbody.insertAdjacentHTML('afterbegin', gameScore);
   });

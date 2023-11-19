@@ -165,6 +165,7 @@ nav i:hover {
   left: 50%;
   transform: translateX(-50%);
   bottom: 10%;
+  /* bottom: -5%; */
 }
 
 .rps-btn-container {
