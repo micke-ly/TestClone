@@ -17,6 +17,8 @@ const displayResult = document.getElementById('display-result');
 const tfootScores = document.querySelectorAll('tfoot span');
 const logoutBtn = document.getElementById('logout-btn');
 const tbody = document.querySelector('tbody');
+const audio = document.querySelectorAll('audio');
+const test = document.querySelector('.test');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
@@ -31,19 +33,20 @@ if (sessionStorage.getItem('loggedIn')) {
 // EVENT LISTENERS
 // ==============================
 
-playerChoices.addEventListener('click', (event) => {
-  let playerMove = event.target.dataset.id;
-  let computerMove = computerChoices();
-  if (
-    playerMove === 'rock' ||
-    playerMove === 'paper' ||
-    playerMove === 'scissors'
-  ) {
+playerChoices.addEventListener('click', async (event) => {
+  if (event.target.tagName === 'I') {
+    playerChoices.style.pointerEvents = 'none';
+    playerChoices.style.opacity = '0.5';
+    displayResult.textContent = '';
+    audio[4].play();
+    let playerMove = event.target.dataset.id;
+    let computerMove = computerChoices();
+
     showPlayerMove.src = `images/${playerMove}.png`;
+    await roulette();
     showComputerMove.src = `images/${computerMove}.png`;
     result(playerMove, computerMove);
   }
-
   // console.log(playerMove);
 });
 
@@ -72,15 +75,28 @@ function computerChoices() {
 
 function result(playerMove, computerMove) {
   if (computerMove === playerMove) {
+    timing(700);
     updateScores('draw');
+    playAudio('draw');
     displayResult.textContent = 'Draw!';
   } else if (computerMove === rules[playerMove]) {
+    timing(2200);
     updateScores('win');
     displayResult.textContent = 'You Win!';
+    playAudio('win');
   } else {
+    timing(2200);
     updateScores('lose');
     displayResult.textContent = 'You Lose!';
+    playAudio('lose');
   }
+}
+
+function timing(ms) {
+  setTimeout(() => {
+    playerChoices.style.pointerEvents = 'auto';
+    playerChoices.style.opacity = '1';
+  }, ms);
 }
 
 function updateScores(result) {
@@ -95,7 +111,6 @@ function updateScores(result) {
   const date = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
   const recentGames = user.normalRPS.recentGames;
   const currentGameIndex = recentGames.findIndex((game) => game.date === date);
-  console.log(currentGameIndex);
   const currentGame =
     currentGameIndex !== -1
       ? recentGames[currentGameIndex]
@@ -120,10 +135,10 @@ function updateScores(result) {
   if (recentGames[currentGameIndex]) {
     recentGames[currentGameIndex] = currentGame;
   } else if (recentGames.length < 10) {
-    recentGames.unshift(currentGame);
+    recentGames.push(currentGame);
   } else {
-    recentGames.pop();
-    recentGames.unshift(currentGame);
+    recentGames.shift();
+    recentGames.push(currentGame);
   }
 
   user.normalRPS.recentGames = recentGames;
@@ -139,6 +154,9 @@ function displayScore(currentGame) {
 }
 
 function modalScoreBoard() {
+  if (modal.classList.contains('modal-inactive')) {
+    tbody.innerHTML = '';
+  }
   const users = JSON.parse(localStorage.getItem('users'));
   const user = users.find(
     (user) => user.userName === sessionStorage.getItem('loggedIn')
@@ -157,10 +175,51 @@ function modalScoreBoard() {
                   <td>${winPercentage.toFixed(2) + '%'}</td>
                 </tr>`;
 
-    if (modal.classList.contains('modal-inactive')) {
-      tbody.innerHTML = '';
-    }
-
     tbody.insertAdjacentHTML('afterbegin', gameScore);
   });
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function roulette() {
+  const rpsList = [
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'images/rock.png',
+    'images/paper.png',
+    'images/scissors.png',
+    'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+  ];
+
+  await delay(700);
+  for (const item of rpsList) {
+    await delay(500);
+    showComputerMove.src = item;
+    if (
+      item !==
+      'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+    ) {
+      playAudio('shuffle');
+    }
+  }
+  await delay(600);
+}
+
+function playAudio(prompt) {
+  if (prompt === 'shuffle') {
+    audio[0].play();
+  } else if (prompt === 'win') {
+    audio[1].play();
+  } else if (prompt === 'lose') {
+    audio[2].play();
+  } else if (prompt === 'draw') {
+    audio[3].play();
+  }
 }
