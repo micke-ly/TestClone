@@ -18,6 +18,7 @@ const tfootScores = document.querySelectorAll('tfoot span');
 const logoutBtn = document.getElementById('logout-btn');
 const tbody = document.querySelector('tbody');
 const audio = document.querySelectorAll('audio');
+const test = document.querySelector('.test');
 
 // VARIABLES
 const rules = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
